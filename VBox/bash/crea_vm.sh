@@ -41,6 +41,8 @@ if [ ! -f "$CONFIG_FILE" ]; then
 fi
 
 # Source the configuration file
+# Note: Only source configuration files from trusted sources.
+# The configuration file should contain only variable assignments.
 echo "Loading configuration from: $CONFIG_FILE"
 # shellcheck source=/dev/null
 source "$CONFIG_FILE"
