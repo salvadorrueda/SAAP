@@ -54,9 +54,35 @@ sudo systemctl restart prometheus
 sudo systemctl enable prometheus
 sudo systemctl enable prometheus-node-exporter
 
+# 5. Configuració automàtica de Prometheus com a Data Source a Grafana
+echo -e "${GREEN}Configurant Prometheus com a Data Source a Grafana...${NC}"
+
+# Ruta del fitxer de configuració de provisioning
+DATASOURCE_CONF="/etc/grafana/provisioning/datasources/prometheus.yaml"
+
+# Creem el directori si no existeix (tot i que grafana ja el sol crear)
+sudo mkdir -p /etc/grafana/provisioning/datasources/
+
+# Creem el fitxer de configuració YAML
+sudo bash -c "cat > $DATASOURCE_CONF <<EOF
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://localhost:9090
+    isDefault: true
+    editable: true
+EOF"
+
+# Reiniciem Grafana per aplicar els canvis
+echo -e "${GREEN}Reiniciant Grafana per aplicar la configuració...${NC}"
+sudo systemctl restart grafana-server
+
 echo -e "${BLUE}Instal·lació completada correctament!${NC}"
 echo -e "---------------------------------------------------"
 echo -e "Grafana: http://$(hostname -I | awk '{print $1}'):3000 (usuari/clau defecte: admin/admin)"
 echo -e "Prometheus: http://$(hostname -I | awk '{print $1}'):9090"
 echo -e "---------------------------------------------------"
-echo -e "${BLUE}Recorda afegir Prometheus com a Data Source a Grafana.${NC}"
+echo -e "${BLUE}Prometheus ja està configurat com a Data Source per defecte a Grafana.${NC}"
