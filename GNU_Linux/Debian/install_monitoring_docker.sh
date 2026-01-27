@@ -72,6 +72,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
     ports:
       - "9090:9090"
     command:
@@ -115,6 +116,7 @@ networks:
 
 volumes:
   grafana_data:
+  prometheus_data:
 EOF
 
 # 3. Executar contenidors
