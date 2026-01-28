@@ -1,4 +1,5 @@
 # Script per instal·lar windows_exporter a Windows
+# Per executar-lo: powershell.exe -ExecutionPolicy Bypass -File "install_windows_exporter.ps1"
 # SAAP - Salvador Rueda
 
 $Version = "0.25.1"
