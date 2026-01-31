@@ -2,7 +2,7 @@
 # Per executar-lo: powershell.exe -ExecutionPolicy Bypass -File "install_windows_exporter.ps1"
 # SAAP - Salvador Rueda
 
-$Version = "0.25.1"
+$Version = "0.31.3" # Darrera versió a 31 de gener de 2026 
 $Arch = "amd64"
 $URL = "https://github.com/prometheus-community/windows_exporter/releases/download/v$Version/windows_exporter-$Version-$Arch.msi"
 $TempPath = "$env:TEMP\windows_exporter.msi"
