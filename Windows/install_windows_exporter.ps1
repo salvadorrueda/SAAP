@@ -15,7 +15,7 @@ Invoke-WebRequest -Uri $URL -OutFile $TempPath
 
 # 2. Instal·lar com a servei
 Write-Host "Instal·lant el servei (Port 9182)..." -ForegroundColor Green
-Start-Process msiexec.exe -ArgumentList "/i $TempPath /quiet /qn /norestart ENABLED_COLLECTORS=ad,adfs,cache,cpu,cpu_info,cs,container,dfsr,dhcp,dns,fsrmquota,iis,logical_disk,logon,memory,msmq,mssql,netframework_clrexceptions,netframework_clrinterop,netframework_clrjit,netframework_clrloading,netframework_clrlocksandthreads,netframework_clrmemory,netframework_clrremoting,netframework_clrsecurity,net,os,process,remote_fx,service,tcp,time,vmware" -Wait
+Start-Process msiexec.exe -ArgumentList "/i $TempPath /quiet /qn /norestart ENABLED_COLLECTORS=cpu,memory,net,logical_disk,os,system" -Wait
 
 # 3. Obrir el tallafocs
 Write-Host "Configurant el Firewall de Windows..." -ForegroundColor Green
